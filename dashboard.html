@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Dashboard | Stanford</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * { box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #f5f5f5, #e9e9e9);
+    }
+    .sidebar {
+      position: fixed; top: 0; left: 0;
+      width: 60px; height: 100vh;
+      background-color: #8c1515;
+      display: flex; flex-direction: column;
+      align-items: center; padding-top: 10px;
+    }
+    .sidebar img { width: 35px; margin-bottom: 30px; }
+    .sidebar i {
+      font-size: 20px; color: white;
+      margin: 20px 0; cursor: pointer;
+      transition: transform 0.3s, color 0.3s;
+    }
+    .sidebar i:hover {
+      transform: scale(1.2); color: #ffd700;
+    }
+    .topbar {
+      margin-left: 60px; height: 60px;
+      background-color: white; display: flex;
+      align-items: center; padding: 0 20px;
+      border-bottom: 1px solid #ddd;
+      font-weight: bold; font-size: 18px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .main {
+      margin-left: 60px; padding: 30px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px; margin-top: 20px;
+    }
+    .card {
+      background: white; border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.12);
+    }
+    .card h3 {
+      color: #8c1515; margin-top: 0;
+    }
+    .profile-card {
+      display: flex; align-items: center;
+      gap: 15px;
+    }
+    .profile-card img {
+      width: 70px; border-radius: 50%;
+    }
+    .pay-btn {
+      background-color: #8c1515;
+      color: white; padding: 10px 16px;
+      border: none; border-radius: 6px;
+      font-weight: bold; cursor: pointer;
+    }
+    .calendar-box span {
+      display: block; margin-bottom: 6px;
+    }
+    .chart-container {
+      width: 100%; height: 300px;
+    }
+    .notes, .alerts {
+      background: #fff; padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      font-size: 14px;
+    }
+    .notes ul, .alerts ul { padding-left: 20px; }
+    .notes li, .alerts li { margin-bottom: 8px; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="stanford-university-seal-vertical-red.png" alt="Logo" />
+    <i class="fas fa-home" title="Home" data-link="index.html"></i>
+    <i class="fas fa-book" title="Courses" data-link="courses.html"></i>
+    <i class="fas fa-dollar-sign" title="Billing" data-link="billing.html"></i>
+    <i class="fas fa-calendar-alt" title="Calendar" data-link="calendar.html"></i>
+    <i class="fas fa-user" title="Profile" data-link="profile.html"></i>
+    <i class="fas fa-sign-out-alt" title="Logout" id="logout-button"></i>
+  </div>
+
+
+  <div class="topbar">Student Dashboard – Stanford University</div>
+
+
+  <div class="main">
+    <div class="grid">
+      <div class="card">
+        <h3>Welcome, Remzi Farzaliyev 👋</h3>
+        <div class="profile-card">
+          <img src="remzi.jpg" alt="Student Photo" />
+          <div>
+            <p><strong>ID:</strong> ST2025-014</p>
+            <p><strong>Program:</strong> BSC Computer Science</p>
+            <p><strong>Year:</strong> 2025 SUMMER PROGRAM</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <h3>Current Courses</h3>
+        <ul>
+          <li>CS106A - Programming Methodology</li>
+          <li>MATH51 - Linear Algebra & Differential Calc</li>
+          <li>PHIL100 - Ethics in Modern Society</li>
+          <li>ENGR40M - Intro to Making: Electronics</li>
+        </ul>
+      </div>
+
+
+      <div class="card">
+        <h3>Financial Overview</h3>
+        <p><strong>Tuition:</strong> $68.000</p>
+        <p><strong>Scholarship:</strong> $36,000 (Merit-based)</p>
+        <p><strong>Balance Due:</strong> $0.00</p>
+        <button class="pay-btn" data-link="billing.html">Pay Now</button>
+      </div>
+
+
+      <div class="card calendar-box">
+        <h3>Upcoming Deadlines</h3>
+        <span>📌 Oct 1 – Fall Quarter Begins</span>
+        <span>📌 Oct 15 – Add/Drop Deadline</span>
+        <span>📌 Nov 23 – Thanksgiving Break</span>
+        <span>📌 Dec 8 – Final Exams Start</span>
+      </div>
+
+
+      <div class="card">
+        <h3>Academic Advisor</h3>
+        <p><strong>Dr. Lisa Cheng & Cybersecurity Division</strong></p>
+        <p>Email: amcheng@stanford.edu</p>
+        <p>Office Hours: Wed & Fri 09:00–15:00</p>
+      </div>
+
+
+      <div class="card">
+        <h3>Course Progress Overview</h3>
+        <div class="chart-container">
+          <canvas id="progressChart"></canvas>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <h3>Weekly Attendance</h3>
+        <div class="chart-container">
+          <canvas id="attendanceChart"></canvas>
+        </div>
+      </div>
+
+
+      <div class="card notes">
+        <h3>Student Notes</h3>
+        <ul>
+          <li>📘 Complete lab 3 by Friday.</li>
+          <li>🧠 Review lecture slides before next quiz.</li>
+          <li>📅 Submit Ethics essay draft by Oct 12.</li>
+        </ul>
+      </div>
+
+
+      <div class="card alerts">
+        <h3>Notifications</h3>
+        <ul>
+          <li>🔔 Financial Aid confirmed for Spring 2026.</li>
+          <li>📢 CS106A final project guidelines updated.</li>
+          <li>⚠️ Canvas maintenance on Sunday 12AM–2AM.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    document.querySelectorAll('[data-link]').forEach(el => {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.location.href = el.getAttribute('data-link');
+      });
+    });
+
+
+    new Chart(document.getElementById('progressChart').getContext('2d'), {
+      type: 'doughnut',
+      data: {
+        labels: ['CS106A', 'MATH51', 'PHIL100', 'ENGR40M'],
+        datasets: [{
+          label: 'Completion %',
+          data: [90, 75, 60, 80],
+          backgroundColor: ['#8c1515', '#c0392b', '#a93226', '#922b21']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom' },
+          title: { display: true, text: 'Course Completion Status' }
+        }
+      }
+    });
+
+
+    new Chart(document.getElementById('attendanceChart').getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+        datasets: [{
+          label: 'Attendance (%)',
+          data: [100, 90, 95, 85, 100],
+          backgroundColor: '#8c1515'
+        }]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: true, max: 100 }
+        },
+        plugins: {
+          title: { display: true, text: 'Weekly Attendance Overview' }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+<!-- ... En Üstteki Kısımlar Değişmedi ... -->
+
+  <!-- Mevcut HTML'in sonuna ekle -->
+
+  <!-- ADDED: Logout Modal -->
+  <div id="logoutModal" style="display: none;" class="modal-overlay">
+    <div class="modal-content">
+      <h3>Are you sure you want to 
+        exit the student panel?</h3>
+      <div class="modal-buttons">
+        <button onclick="confirmLogout()">YES</button>
+        <button onclick="closeModal()">NO</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADDED: Modal CSS -->
+  <style>
+    .modal-overlay {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 25px 35px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .modal-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .modal-buttons button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .modal-buttons button:first-child {
+      background-color: #8C1515;
+      color: white;
+    }
+
+    .modal-buttons button:last-child {
+      background-color: #ccc;
+      color: black;
+    }
+  </style>
+
+  <!-- ADDED: Modal Script -->
+  <script>
+    document.getElementById('logout-button').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('logoutModal').style.display = 'flex';
+    });
+
+    function closeModal() {
+      document.getElementById('logoutModal').style.display = 'none';
+    }
+
+    function confirmLogout() {
+      window.location.href = 'index.html'; // Giriş sayfanın ismi buysa, değiştirmene gerek yok
+    }
+  </script>
+
+<!-- LOADER -->
+<div id="loaderOverlay" style="display: none;">
+  <div class="loader-spinner"></div>
+</div>
+
+<script>
+  function logout() {
+    document.getElementById('logout-loader').style.display = 'flex';
+    setTimeout(() => {
+      window.location.href = "login.html"; // Login ekranına yönlendir
+    }, 2000);
+  }
+</script>
+
+
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Dashboard | Stanford</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #f5f5f5, #e9e9e9);
+    }
+
+    .logout-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #8C1515;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      z-index: 1000;
+    }
+
+    .logout-loader {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255, 255, 255, 0.95);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .logout-loader .spinner {
+      width: 50px;
+      height: 50px;
+      border: 6px solid #ccc;
+      border-top-color: #8C1515;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 16px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Ana Dashboard içeriğin buraya geliyor -->
+  <h1 style="text-align:center; margin-top:100px;">Welcome to the Stanford Student Dashboard</h1>
+  <!-- Örnek veri/tablolar/kartlar burada olacak (daha önceki içerik korunmuştur) -->
+
+  <!-- Quit / Logout Button -->
+  <button class="logout-btn" onclick="logout()">Quit</button>
+
+  <!-- Çıkış Animasyonu -->
+  <div id="logout-loader" class="logout-loader">
+    <div class="spinner"></div>
+    <p>Logging out...</p>
+  </div>
+
+  <script>
+    function logout() {
+      document.getElementById('logout-loader').style.display = 'flex';
+      setTimeout(() => {
+        window.location.href = "login.html"; // Ana sayfaya yönlendir
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

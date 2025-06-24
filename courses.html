@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Courses | Stanford University</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+    body {
+      margin: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      background-color: #8C1515;
+      padding: 12px 24px;
+    }
+    header img {
+      height: 48px;
+      cursor: pointer;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #8C1515;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+    }
+    .controls {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    input, select {
+      padding: 10px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      min-width: 220px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+    .course-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #8C1515;
+      margin-bottom: 8px;
+    }
+    .professor {
+      font-size: 15px;
+      color: #555;
+    }
+    .grade {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #333;
+      font-weight: bold;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 3% auto;
+      padding: 30px;
+      border-radius: 16px;
+      width: 70%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      animation: zoomIn 0.3s ease;
+      line-height: 1.6;
+    }
+    @keyframes zoomIn {
+      from {transform: scale(0.9); opacity: 0;}
+      to {transform: scale(1); opacity: 1;}
+    }
+    .modal-close {
+      float: right;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .modal-section {
+      margin-bottom: 20px;
+    }
+    .modal-section strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #8C1515;
+    }
+    .contact-info {
+      background: #f9f9f9;
+      padding: 10px 15px;
+      border-left: 4px solid #8C1515;
+      border-radius: 6px;
+    }
+    .prof-image {
+      width: 100px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+    .materials a {
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: 5px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background-color: #8C1515;
+      color: white;
+      text-decoration: none;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="stanford-university-seal-vertical-red.png" alt="Stanford Logo" onclick="window.location.href='dashboard.html'" />
+</header>
+
+<div class="container">
+  <h1>My Courses</h1>
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Search by course title...">
+    <select id="categorySelect">
+      <option value="all">All Categories</option>
+      <option value="CS">Computer Science</option>
+      <option value="EE">Electrical Engineering</option>
+      <option value="General">General</option>
+    </select>
+  </div>
+  <div class="grid" id="courseGrid"></div>
+</div>
+
+<div id="courseModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="document.getElementById('courseModal').style.display='none'">&times;</span>
+    <img id="modalImage" class="prof-image" src="" alt="Instructor">
+    <h2 id="modalTitle"></h2>
+    <div class="modal-section">
+      <strong>Instructor:</strong>
+      <p id="modalProfessor"></p>
+    </div>
+    <div class="modal-section">
+      <strong>Description:</strong>
+      <p id="modalDescription"></p>
+    </div>
+    <div class="modal-section">
+      <strong>Schedule:</strong>
+      <ul id="modalSchedule"></ul>
+    </div>
+    <div class="modal-section">
+      <strong>Contact:</strong>
+      <div id="modalContact" class="contact-info"></div>
+    </div>
+    <div class="modal-section">
+      <strong>Materials:</strong>
+      <div id="modalMaterials" class="materials"></div>
+    </div>
+    <div class="modal-section">
+      <strong>Lecture Video:</strong>
+      <iframe id="modalVideo" src="" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  const courses = [
+    {
+      title: "CS229: Machine Learning",
+      prof: "Andrew Ng",
+      email: "ang@cs.stanford.edu",
+      phone: "+1 (650) 123-4567",
+      image: "images/andrew_ng.jpg",
+      materials: [
+        { name: "Syllabus", link: "pdfs/cs229_syllabus.pdf" },
+        { name: "Assignments", link: "pdfs/cs229_assignments.pdf" }
+      ],
+      video: "https://www.youtube.com/embed/UzxYlbK2c7E",
+      grade: "N/A",
+      category: "CS",
+      description: "Intro to ML concepts and algorithms.",
+      schedule: ["Mon: Lecture", "Wed: Discussion"]
+    },
+    {
+      title: "CS231N: Deep Learning for Vision",
+      prof: "Fei-Fei Li",
+      email: "feifeili@cs.stanford.edu",
+      phone: "+1 (650) 222-3344",
+      image: "images/fei_fei_li.jpg",
+      materials: [
+        { name: "Syllabus", link: "pdfs/cs231n_syllabus.pdf" },
+        { name: "Projects", link: "pdfs/cs231n_projects.pdf" }
+      ],
+      video: "https://www.youtube.com/embed/ywZ9s6G8pzU",
+      grade: "N/A",
+      category: "CS",
+      description: "Neural networks and visual recognition techniques.",
+      schedule: ["Tue: Lecture", "Thu: Lab"]
+    },
+    {
+      title: "CS224N: NLP with Deep Learning",
+      prof: "Christopher Manning",
+      email: "manning@cs.stanford.edu",
+      phone: "+1 (650) 333-4455",
+      image: "images/christopher_manning.jpg",
+      materials: [
+        { name: "Lecture Notes", link: "pdfs/cs224n_notes.pdf" },
+        { name: "Reading List", link: "pdfs/cs224n_reading.pdf" }
+      ],
+      video: "https://www.youtube.com/embed/OQQ-W_63UgQ",
+      grade: "N/A",
+      category: "CS",
+      description: "Deep learning methods for natural language processing.",
+      schedule: ["Mon: Lecture", "Wed: Section"]
+    },
+    {
+      title: "EE364A: Convex Optimization",
+      prof: "Stephen Boyd",
+      email: "boyd@stanford.edu",
+      phone: "+1 (650) 444-5566",
+      image: "images/stephen_boyd.jpg",
+      materials: [
+        { name: "Textbook", link: "pdfs/ee364a_textbook.pdf" },
+        { name: "Assignments", link: "pdfs/ee364a_assignments.pdf" }
+      ],
+      video: "https://www.youtube.com/embed/mgGOpF3Vw7M",
+      grade: "N/A",
+      category: "EE",
+      description: "Techniques and applications of convex optimization.",
+      schedule: ["Wed: Lecture", "Fri: Discussion"]
+    },
+    {
+      title: "CS155: Statistical Learning",
+      prof: "Trevor Hastie",
+      email: "hastie@stanford.edu",
+      phone: "+1 (650) 555-6677",
+      image: "images/trevor_hastie.jpg",
+      materials: [
+        { name: "Course PDF", link: "pdfs/cs155_course.pdf" },
+        { name: "Datasets", link: "pdfs/cs155_datasets.zip" }
+      ],
+      video: "https://www.youtube.com/embed/_L39rN6gz7Y",
+      grade: "N/A",
+      category: "CS",
+      description: "Fundamentals of statistical learning and regression.",
+      schedule: ["Tue: Lecture", "Thu: Section"]
+    },
+    {
+      title: "CS148: Computer Graphics",
+      prof: "Kayvon Fatahalian",
+      email: "kayvonf@stanford.edu",
+      phone: "+1 (650) 666-7788",
+      image: "images/kayvon_fatahalian.jpg",
+      materials: [
+        { name: "Slides", link: "pdfs/cs148_slides.pdf" },
+        { name: "Demos", link: "pdfs/cs148_demos.zip" }
+      ],
+      video: "https://www.youtube.com/embed/5xO-Pj7MnbQ",
+      grade: "N/A",
+      category: "CS",
+      description: "Introduction to 3D rendering and computer graphics.",
+      schedule: ["Mon: Lecture", "Wed: Lab"]
+    },
+    {
+      title: "CS106B: Programming Abstractions",
+      prof: "Julie Zelenski",
+      email: "zelenski@cs.stanford.edu",
+      phone: "+1 (650) 777-8899",
+      image: "images/julie_zelenski.jpg",
+      materials: [
+        { name: "Handouts", link: "pdfs/cs106b_handouts.pdf" },
+        { name: "Assignments", link: "pdfs/cs106b_assignments.pdf" }
+      ],
+      video: "https://www.youtube.com/embed/DxqKpTwUuFM",
+      grade: "N/A",
+      category: "CS",
+      description: "Advanced programming techniques using C++.",
+      schedule: ["Tue: Lecture", "Thu: Section"]
+    },
+    {
+      title: "CS124: From Languages to Information",
+      prof: "Dan Jurafsky",
+      email: "jurafsky@stanford.edu",
+      phone: "+1 (650) 888-9900",
+      image: "images/dan_jurafsky.jpg",
+      materials: [
+        { name: "Course Notes", link: "pdfs/cs124_notes.pdf" }
+      ],
+      video: "https://www.youtube.com/embed/FdRymDRtPJA",
+      grade: "N/A",
+      category: "CS",
+      description: "Understanding language and information processing.",
+      schedule: ["Mon: Lecture", "Wed: Lab"]
+    },
+    {
+      title: "CS161: Design & Analysis of Algorithms",
+      prof: "Tim Roughgarden",
+      email: "roughgarden@cs.stanford.edu",
+      phone: "+1 (650) 999-1010",
+      image: "images/tim_roughgarden.jpg",
+      materials: [
+        { name: "Problem Sets", link: "pdfs/cs161_problems.pdf" }
+      ],
+      video: "https://www.youtube.com/embed/9LtZ-Qrp7UY",
+      grade: "N/A",
+      category: "CS",
+      description: "Design and analysis of algorithms and complexity.",
+      schedule: ["Wed: Lecture", "Fri: Discussion"]
+    },
+    {
+      title: "MATH120: Groups and Rings",
+      prof: "Ravi Vakil",
+      email: "vakil@math.stanford.edu",
+      phone: "+1 (650) 111-2121",
+      image: "images/ravi_vakil.jpg",
+      materials: [
+        { name: "Lecture Notes", link: "pdfs/math120_notes.pdf" },
+        { name: "Problem Sets", link: "pdfs/math120_problems.pdf" }
+      ],
+      video: "https://www.youtube.com/embed/Ap0l5zpInxk",
+      grade: "N/A",
+      category: "CS",
+      description: "Abstract algebra: groups, rings, and fields.",
+      schedule: ["Tue: Lecture", "Thu: Exercise"]
+    },
+    {
+      title: "CS50: Problem Solving with Python",
+      prof: "Mehran Sahami",
+      email: "sahami@cs.stanford.edu",
+      phone: "+1 (650) 222-3333",
+      image: "images/mehran_sahami.jpg",
+      materials: [
+        { name: "Python Guide", link: "pdfs/cs50_python_guide.pdf" },
+        { name: "Assignments", link: "pdfs/cs50_assignments.pdf" }
+      ],
+      video: "https://www.youtube.com/embed/nLRL_NcnK-4",
+      grade: "Not Participated",
+      category: "CS",
+      description: "Python programming for solving real-world problems.",
+      schedule: ["Mon: Lecture", "Wed: Section"]
+    },
+    {
+      title: "STATS202: Data Mining and Analysis",
+      prof: "Trevor Hastie",
+      email: "hastie@stat.stanford.edu",
+      phone: "+1 (650) 444-5555",
+      image: "https://statweb.stanford.edu/~hastie/Papers/hastie.jpg",
+      materials: [
+        { name: "Lab Guide", link: "pdfs/stats202_lab.pdf" },
+        { name: "Final Project", link: "pdfs/stats202_project.pdf" }
+      ],
+      video: "https://www.youtube.com/embed/tpCFfeUEGs8",
+      grade: "N/A",
+      category: "General",
+      description: "Exploratory data analysis and mining techniques.",
+      schedule: ["Tue: Lecture", "Thu: Lab"]
+    }
+];
+
+  const grid = document.getElementById('courseGrid');
+  const searchInput = document.getElementById('searchInput');
+  const categorySelect = document.getElementById('categorySelect');
+
+  function openModal(course) {
+    document.getElementById('modalTitle').textContent = course.title;
+    document.getElementById('modalProfessor').textContent = `Prof. ${course.prof}`;
+    document.getElementById('modalDescription').textContent = course.description || 'No description provided.';
+    document.getElementById('modalImage').src = course.image || '';
+
+    const scheduleList = document.getElementById('modalSchedule');
+    scheduleList.innerHTML = '';
+    (course.schedule || []).forEach(day => {
+      const li = document.createElement('li');
+      li.textContent = day;
+      scheduleList.appendChild(li);
+    });
+
+    document.getElementById('modalContact').innerHTML = `Email: <a href="mailto:${course.email}">${course.email}</a><br>Phone: ${course.phone}`;
+
+    const materialsDiv = document.getElementById('modalMaterials');
+    materialsDiv.innerHTML = '';
+    (course.materials || []).forEach(file => {
+      const a = document.createElement('a');
+      a.href = file.link;
+      a.textContent = file.name;
+      a.target = "_blank";
+      materialsDiv.appendChild(a);
+    });
+
+    document.getElementById('modalVideo').src = course.video || '';
+
+    document.getElementById('courseModal').style.display = 'block';
+  }
+
+  function renderCourses() {
+    const keyword = searchInput.value.toLowerCase();
+    const category = categorySelect.value;
+    grid.innerHTML = "";
+
+    courses.filter(course => {
+      const matchTitle = course.title.toLowerCase().includes(keyword);
+      const matchCategory = category === 'all' || course.category === category;
+      return matchTitle && matchCategory;
+    }).forEach(course => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="course-title">${course.title}</div>
+        <div class="professor">Prof. ${course.prof}</div>
+        <div class="grade">${course.grade === "Not Participated" ? "<i>No participation or grades yet</i>" : "Grade: " + course.grade}</div>
+      `;
+      card.onclick = () => openModal(course);
+      grid.appendChild(card);
+    });
+  }
+
+  searchInput.addEventListener('input', renderCourses);
+  categorySelect.addEventListener('change', renderCourses);
+  renderCourses();
+
+
+</script>
+
+</body>
+</html>
