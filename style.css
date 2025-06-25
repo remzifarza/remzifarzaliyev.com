@@ -627,3 +627,77 @@ body {
   border: none;
   border-top: 1px solid #334155;
 }
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 120px 20px 60px;
+  }
+
+  .hero-content {
+    margin-top: 0;
+    max-width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: 34px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .hero-image img {
+    margin-top: 20px;
+  }
+
+  .about-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .skills-grid,
+  .testimonials-grid,
+  .footer-columns,
+  .projects-grid,
+  .contact-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+
+  .contact-info {
+    text-align: center;
+  }
+
+  .footer-column {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+}
