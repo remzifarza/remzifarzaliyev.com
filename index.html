@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Remzi Farzaliyev | Full-Stack Developer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <img src="assets/logo.png" alt="Logo" class="logo" />
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="hire-btn">Hire Me</a>
+    </nav>
+  </header>
+
+  
+<!-- Mobil Logo ve Menü -->
+<div class="mobile-header">
+  <div class="mobile-logo">
+    <img src="assets/logo.png" alt="Remzi.dev Logo">
+  </div>
+  <div class="mobile-menu">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+
+<section id="home" class="hero-section">
+    <div class="hero-content">
+      <h4>FULL-STACK DEVELOPER</h4>
+      <h1>Hi, I'm <span>Remzi Farzaliyev</span></h1>
+      <p>I build exceptional digital experiences</p>
+      <p class="sub-text">
+        A passionate full-stack developer with expertise in creating robust, scalable, and user-friendly web applications. I transform ideas into elegant digital solutions.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn primary">View My Work</a>
+        <a href="#contact" class="btn outline">Contact Me</a>
+      </div>
+      <div class="stats">
+        <div><strong>5+</strong><br>Years Experience</div>
+        <div><strong>50+</strong><br>Projects Completed</div>
+        <div><strong>30+</strong><br>Happy Clients</div>
+        <div><strong>15+</strong><br>Technologies</div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="assets/hero.png" alt="Hero Graphic" />
+    </div>
+  </section>
+
+  <!-- ======= ABOUT SECTION ======= -->
+<section id="about" class="about-section" style="padding: 100px 10%; background-color: #fff; display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
+  <div style="flex: 1; min-width: 280px;">
+    <img src="assets/about-image.png" alt="About Remzi" style="width: 100%; max-width: 450px; border-radius: 20px;">
+  </div>
+  <div style="flex: 2; min-width: 280px;">
+    <h5 style="color: #0ea5e9; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">About Me</h5>
+    <h2 style="font-size: 36px; margin-bottom: 20px;">Turning Code into <span style="background: linear-gradient(to right, #00c6ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Digital Impact</span></h2>
+    <p style="font-size: 17px; color: #555; line-height: 1.6; margin-bottom: 20px;">
+      I’m Remzi Farzaliyev, a full-stack developer specialized in building end-to-end digital products with intuitive UI and powerful backend architecture.
+    </p>
+    <p style="font-size: 17px; color: #555; line-height: 1.6; margin-bottom: 30px;">
+      I combine creativity with technical expertise to deliver solutions that are scalable, efficient, and visually stunning.
+    </p>
+    <div style="display: flex; gap: 15px;">
+      <a href="#" class="btn primary">Download CV</a>
+      <a href="#skills" class="btn outline">Explore Skills</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= SKILLS SECTION ======= -->
+<!-- Updated Skills Section with Animations and Enhanced Style -->
+<section id="skills" class="skills-section">
+  <div class="container">
+    <h5 class="section-subtitle">MY EXPERTISE</h5>
+    <h2 class="section-title">Professional <span>Skills</span></h2>
+    <p class="section-description">
+      I’ve worked with a variety of technologies and frameworks to deliver high-quality solutions. Here are some of the key skills I bring to the table.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skills-column">
+        <h3>Frontend Development</h3>
+        <div class="skill">
+          <span>React.js</span>
+          <div class="progress"><div class="progress-bar" style="width: 95%"></div></div>
+        </div>
+        <div class="skill">
+          <span>JavaScript / TypeScript</span>
+          <div class="progress"><div class="progress-bar" style="width: 90%"></div></div>
+        </div>
+        <div class="skill">
+          <span>HTML5 / CSS3</span>
+          <div class="progress"><div class="progress-bar" style="width: 98%"></div></div>
+        </div>
+        <div class="skill">
+          <span>Vue.js</span>
+          <div class="progress"><div class="progress-bar" style="width: 85%"></div></div>
+        </div>
+        <div class="skill">
+          <span>Tailwind CSS / SASS</span>
+          <div class="progress"><div class="progress-bar" style="width: 92%"></div></div>
+        </div>
+      </div>
+
+      <div class="skills-column">
+        <h3>Backend Development</h3>
+        <div class="skill">
+          <span>Node.js / Express</span>
+          <div class="progress"><div class="progress-bar" style="width: 92%"></div></div>
+        </div>
+        <div class="skill">
+          <span>Python / Django</span>
+          <div class="progress"><div class="progress-bar" style="width: 88%"></div></div>
+        </div>
+        <div class="skill">
+          <span>MongoDB / PostgreSQL</span>
+          <div class="progress"><div class="progress-bar" style="width: 90%"></div></div>
+        </div>
+        <div class="skill">
+          <span>RESTful APIs / GraphQL</span>
+          <div class="progress"><div class="progress-bar" style="width: 94%"></div></div>
+        </div>
+        <div class="skill">
+          <span>Docker / AWS</span>
+          <div class="progress"><div class="progress-bar" style="width: 85%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools">
+      <h4>Other Technologies & Tools</h4>
+      <div class="tools-list">
+        <span>Git & GitHub</span><span>Redux</span><span>Next.js</span><span>Jest</span><span>CI/CD</span><span>Webpack</span><span>Firebase</span><span>Figma</span><span>Agile/Scrum</span><span>TDD</span><span>Responsive Design</span><span>UI/UX Principles</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.skills-section {
+  padding: 100px 10% 80px;
+  background-color: #f9f9fb;
+  text-align: center;
+}
+.section-subtitle {
+  text-transform: uppercase;
+  color: #007BFF;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 10px 0 20px;
+}
+.section-title span {
+  background: linear-gradient(to right, #00c6ff, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.section-description {
+  font-size: 16px;
+  max-width: 800px;
+  margin: 0 auto 50px;
+  color: #555;
+}
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  justify-content: center;
+}
+.skills-column {
+  flex: 1;
+  min-width: 300px;
+}
+.skills-column h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #222;
+}
+.skill {
+  margin-bottom: 18px;
+  text-align: left;
+}
+.skill span {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.progress {
+  background-color: #e4e4e4;
+  border-radius: 10px;
+  height: 10px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #00c6ff, #7c3aed);
+  border-radius: 10px;
+  width: 0;
+  transition: width 1.5s ease-out;
+}
+.tools {
+  margin-top: 60px;
+}
+.tools h4 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #222;
+}
+.tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.tools-list span {
+  padding: 8px 14px;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 14px;
+}
+</style>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.querySelectorAll('.progress-bar').forEach((bar) => {
+    const rect = bar.getBoundingClientRect();
+    if (rect.top < window.innerHeight && bar.style.width === '0px') {
+      const width = bar.style.width;
+      bar.style.width = bar.getAttribute('style').match(/width: (\d+%)/)[1];
+    }
+  });
+});
+</script>
+
+<!-- ======= PROJECTS SECTION ======= -->
+<section id="projects" class="projects-section">
+  <div class="container">
+    <h5 class="section-subtitle">FEATURED WORK</h5>
+    <h2 class="section-title">My <span>Projects</span></h2>
+    <p class="section-description">
+      Here are some of the real-world applications and systems I’ve built, combining cutting-edge technologies with practical use cases.
+    </p>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <img src="assets/ecommerce-dashboard.png" alt="E-commerce Panel">
+        <div class="project-info">
+          <h3>E-commerce Panel</h3>
+          <p>Modern admin-focused sales panel offering product, order and user management.</p>
+          <span class="tech">React, MongoDB, REST API</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="assets/resume-analyzer.png" alt="Advanced CV/Resume Interpreter">
+        <div class="project-info">
+          <h3>Advanced CV/Resume Interpreter</h3>
+          <p>A natural language processing module that analyzes CVs, detects deficiencies, and offers suggestions.</p>
+          <span class="tech">Python, NLP, GPT</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="assets/modem-diagnostics.png" alt="Modem Failure Diagnostic System">
+        <div class="project-info">
+          <h3>Modem Failure Diagnostic System</h3>
+          <p>Analysis module that detects internet connection problems and suggests solutions.</p>
+          <span class="tech">Python, Technical Diagnostics, System Monitoring</span>
+        </div>
+      </div>
+
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.projects-section {
+  padding: 100px 10% 80px;
+  background-color: #ffffff;
+  text-align: center;
+}
+.projects-section .section-subtitle {
+  text-transform: uppercase;
+  color: #7c3aed;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.projects-section .section-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 10px 0 20px;
+}
+.projects-section .section-title span {
+  background: linear-gradient(to right, #00c6ff, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.projects-section .section-description {
+  font-size: 16px;
+  max-width: 800px;
+  margin: 0 auto 50px;
+  color: #555;
+}
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+.project-card {
+  width: 300px;
+  background: #f9f9fb;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-8px);
+}
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.project-info {
+  padding: 20px;
+  text-align: left;
+}
+.project-info h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.project-info p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+.project-info .tech {
+  display: inline-block;
+  font-size: 13px;
+  background-color: #e9e9f5;
+  padding: 5px 10px;
+  border-radius: 12px;
+  color: #333;
+}
+</style>
+<!-- ======= TESTIMONIALS SECTION ======= -->
+<section id="testimonials" class="testimonials-section">
+  <div class="container">
+    <h5 class="section-subtitle">WHAT CLIENTS SAY</h5>
+    <h2 class="section-title">Client <span>Testimonials</span></h2>
+    <p class="section-description">
+      Don’t just take my word for it. Here’s what some of my clients have to say about working with me.
+    </p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="avatar">S</div>
+          <div>
+            <strong>Sarah Johnson</strong><br />
+            <span>CEO, Personal Startup</span>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p>"Remzi delivered our e-commerce platform ahead of schedule and exceeded our expectations. His technical expertise and attention to detail made our project a success. We’ll definitely work with him again."</p>
+        <div class="project-name">Project: E-Commerce Platform</div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="avatar">M</div>
+          <div>
+            <strong>Michael Chen</strong><br />
+            <span>CTO, DataFlow</span>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p>"Working with Remzi was a game-changer for our data visualization project. His ability to understand complex requirements and translate them into an intuitive interface was impressive. Highly recommended!"</p>
+        <div class="project-name">Project: Data Visualization Dashboard</div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-header">
+          <div class="avatar">A</div>
+          <div>
+            <strong>Amanda Rodriguez</strong><br />
+            <span>Marketing Director</span>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p>"Remzi’s work on our content management system was exceptional. He not only delivered a user-friendly interface but also provided valuable insights that improved our workflow. A true professional!"</p>
+        <div class="project-name">Project: Content Management System</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container contact-container">
+    <div class="contact-info">
+      <h5>GET IN TOUCH</h5>
+      <h2>Let's Talk <span>Business</span></h2>
+      <p>
+        Have a project in mind or want to collaborate? Reach out and let's build something amazing together.
+      </p>
+      <div class="contact-details">
+        <p><strong>Email:</strong> remzifarzaliyev378@gmail.com</p>
+        <p><strong>Instagram:</strong> remzi.farzaliyev</p>
+        <p><strong>Linkedin:</strong> Remzi Farzaliyev</p>
+        <p><strong>Githup:</strong> remzifarzaliyev</p>
+        <p><strong>Location:</strong> Israel</p>
+        
+      </div>
+    </div>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit" class="btn primary">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h3>About</h3>
+        <p>
+          I'm Remzi Farzaliyev, a full-stack developer passionate about building intelligent digital solutions using AI, web, and robotics.
+        </p>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Technologies</h3>
+        <ul>
+          <li>React / Vue</li>
+          <li>Node.js / Django</li>
+          <li>AI & Machine Learning</li>
+          <li>IoT & Robotics</li>
+          <li>UI/UX & Figma</li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Follow Me</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p style="margin-top: 10px;">Email: <a href="mailto:remzifarzaliyev378@gmail.com">remzifarzaliyev378@gmail.com</a></p>
+
+    
+    </div>
+    </div>
+    <hr>
+    <div class="footer-bottom">
+      <p>© 2025 Remzi Farzaliyev. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
