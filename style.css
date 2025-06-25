@@ -701,3 +701,236 @@ body {
     text-align: center;
   }
 }
+
+/* style.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f9f9fb;
+  color: #1f1f1f;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 50px 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.logo {
+  height: 60px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-size: 16px;
+}
+
+.nav-links a:hover {
+  color: #7c3aed;
+}
+
+.hire-btn {
+  padding: 12px 24px;
+  background: linear-gradient(to right, #00c6ff, #7c3aed);
+  color: #fff;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.hire-btn:hover {
+  opacity: 0.9;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 180px 10% 100px;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-top: 120px;
+}
+
+.hero-content {
+  max-width: 600px;
+  margin-top: -90px;
+}
+
+.hero-content h4 {
+  color: #7c3aed;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.hero-content h1 {
+  font-size: 50px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.hero-content h1 span {
+  background: linear-gradient(to right, #00c6ff, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.sub-text {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-weight: 500;
+  border-radius: 25px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn.primary {
+  background: linear-gradient(to right, #00c6ff, #7c3aed);
+  color: white;
+}
+
+.btn.outline {
+  border: 2px solid #00c6ff;
+  color: #00c6ff;
+  background-color: transparent;
+}
+
+.stats {
+  display: flex;
+  gap: 30px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.stats div {
+  text-align: center;
+  font-weight: 500;
+}
+
+.stats strong {
+  font-size: 24px;
+  display: block;
+  background: linear-gradient(to right, #00c6ff, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-image img {
+  max-width: 620px;
+  width: 100%;
+  border-radius: 30px;
+  margin-top: -60px;
+}
+
+/* --- MOBİL CİHAZLAR İÇİN GÜNCELLENMİŞ TASARIM --- */
+@media (max-width: 768px) {
+  .navbar {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .nav-links,
+  .hire-btn {
+    display: none;
+  }
+
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 80px 20px 60px;
+  }
+
+  .hero-content {
+    margin-top: 0;
+    max-width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: 34px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .hero-image {
+    display: none;
+  }
+
+  .about-section,
+  .skills-grid,
+  .testimonials-grid,
+  .footer-columns,
+  .projects-grid,
+  .contact-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .about-section,
+  .contact-section {
+    padding: 60px 20px;
+  }
+
+  .contact-form,
+  .contact-info,
+  .footer-column {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-column {
+    flex: 1 1 100%;
+  }
+}
